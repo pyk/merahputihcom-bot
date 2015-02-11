@@ -109,7 +109,7 @@ func Activate(buffer *bytes.Buffer) (string, error) {
 	// fmt.Println(respReg.Status)
 
 	// check email
-	time.Sleep(3 * time.Second)
+	time.Sleep(10 * time.Second)
 	respAct, err := http.Get("http://api.guerrillamail.com/ajax.php?f=get_email_list&ip=127.0.0.1&agent=Mozilla_foo_bar&offset=0&sid_token=" + datamail.Token)
 	if err != nil {
 		return "", err
@@ -151,6 +151,16 @@ func main() {
 	//done := make(chan int)
 	//var wg sync.WaitGroup
 	var buffer bytes.Buffer
+	for i := 0; i < 5; i++ {
+		result, err := Activate(&buffer)
+		if err != nil {
+			log.Println(err)
+		}
+		_, err = buffer.WriteString(result)
+		if err != nil {
+			log.Println(err)
+		}
+	}
 
 	//wg.Wait()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

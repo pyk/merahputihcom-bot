@@ -66,7 +66,13 @@ func Activate(buffer *bytes.Buffer) (string, error) {
 	lastname := randomdata.LastName()
 	//city := randomdata.City()
 	gender := genders[rand.Intn(1)]
-	username := randomString(12)
+	username_prefix1 := firstname[:(len(firstname)/2)-1]
+	username_prefix2 := firstname[(len(firstname)/2)-1:]
+	username_suffix1 := lastname[:(len(lastname)/2)-1]
+	username_suffix2 := lastname[(len(lastname)/2)-1:]
+	username_prefixs := []string{username_prefix1, username_prefix2}
+	username_suffixs := []string{username_suffix1, username_suffix2}
+	username := "" + username_prefixs[rand.Intn(1)] + "" + username_suffixs[rand.Intn(1)]
 	password := "" + firstname + "" + lastname
 	//fmt.Println(username)
 

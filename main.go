@@ -138,7 +138,7 @@ func Activate(buffer *bytes.Buffer) (string, error) {
 	}
 	// log.Println(activate.Status)
 	//fmt.Printf("%s:%s\n", username, password)
-	result := "" + username + ":" + password
+	result := "" + username + ":" + password + "\n"
 	_, err = buffer.WriteString(result)
 	if err != nil {
 		return "", err

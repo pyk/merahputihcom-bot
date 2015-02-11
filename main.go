@@ -151,16 +151,6 @@ func main() {
 	//done := make(chan int)
 	//var wg sync.WaitGroup
 	var buffer bytes.Buffer
-	for i := 0; i < 5; i++ {
-		result, err := Activate(&buffer)
-		if err != nil {
-			log.Println(err)
-		}
-		_, err = buffer.WriteString(result)
-		if err != nil {
-			log.Println(err)
-		}
-	}
 
 	//wg.Wait()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

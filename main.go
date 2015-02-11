@@ -109,7 +109,7 @@ func Activate(buffer *bytes.Buffer) (string, error) {
 	// fmt.Println(respReg.Status)
 
 	// check email
-	time.Sleep(6 * time.Second)
+	time.Sleep(10 * time.Second)
 	respAct, err := http.Get("http://api.guerrillamail.com/ajax.php?f=get_email_list&ip=127.0.0.1&agent=Mozilla_foo_bar&offset=0&sid_token=" + datamail.Token)
 	if err != nil {
 		return "", err
